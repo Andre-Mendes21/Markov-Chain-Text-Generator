@@ -7,9 +7,6 @@
 #define STB_DS_IMPLEMENTATION
 #include "./stb_ds.h"
 
-#define ARRLEN(arr) \
-    (sizeof((arr)) / sizeof((arr[0])))
-
 typedef struct {
     char* key;
     String_View* value;
@@ -26,18 +23,19 @@ void gt_print(GraphText* gt) {
     }
 }
 
-void gt_add_keyword(GraphText* gt, const char* keyword, String_View next_word) {
+GraphText* gt_add_keyword(GraphText* gt, String_View keyword, String_View next_word) {
     // checks if word exists in hashTable
-    String_View* keyword_vals = shget(gt, keyword);
+    String_View* keyword_vals = shget(gt, keyword.data);
     if(keyword_vals != NULL) {
         for(int i = 0; i < arrlen(keyword_vals); i++) {
             if(sv_eq_ignorecase(keyword_vals[i], next_word) == true) {
-                return;
+                return gt;
             }
         }
     }
-    arrput(keyword_vals, next_word);
-    shput(gt, keyword, keyword_vals);
+    arrpush(keyword_vals, next_word);
+    shput(gt, keyword.data, keyword_vals);
+    return gt;
 }
 
 String_View* read_file(char* filename) {
@@ -59,7 +57,7 @@ String_View* read_file(char* filename) {
             i = 0;
         }
         if(isalpha(ch)) {
-            word[i++] = ch;
+            word[i++] = tolower(ch);
         }
     }
     fclose(file);
@@ -80,11 +78,11 @@ int main(int argc, char** argv) {
         return EXIT_FAILURE;
     }
 
+    // char* test[7] = {"Alice", "was", "beginning", "to", "get", "very", "tired"};
     for(int i = 1; i < arrlen(file); i++) {
-        gt_add_keyword(gt, file[i-1].data, file[i]);
+        gt = gt_add_keyword(gt, file[i-1], file[i]);
     }
 
     gt_print(gt);
-    
     return 0;
 }
