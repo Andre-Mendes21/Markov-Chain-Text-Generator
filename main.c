@@ -38,6 +38,13 @@ GraphText* gt_add_keyword(GraphText* gt, String_View keyword, String_View next_w
     return gt;
 }
 
+GraphText* gt_fill(GraphText* gt, String_View* text) {
+    for(int i = 1; i < arrlen(text); i++) {
+        gt = gt_add_keyword(gt, text[i-1], text[i]);
+    }
+    return gt;
+}
+
 String_View* read_file(char* filename) {
     FILE* file = fopen(filename, "r");
     if(!file) {
@@ -78,10 +85,7 @@ int main(int argc, char** argv) {
         return EXIT_FAILURE;
     }
 
-    // char* test[7] = {"Alice", "was", "beginning", "to", "get", "very", "tired"};
-    for(int i = 1; i < arrlen(file); i++) {
-        gt = gt_add_keyword(gt, file[i-1], file[i]);
-    }
+    gt = gt_fill(gt, file);
 
     gt_print(gt);
     return 0;
