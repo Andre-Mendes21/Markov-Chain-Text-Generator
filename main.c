@@ -4,9 +4,9 @@
 #include <time.h>
 #include <ctype.h>
 #define SV_IMPLEMENTATION
-#include "./sv.h"
+#include "./include/sv.h"
 #define STB_DS_IMPLEMENTATION
-#include "./stb_ds.h"
+#include "./include/stb_ds.h"
 
 typedef struct {
     char* key;
