@@ -110,6 +110,14 @@ int main(int argc, char** argv) {
         write_file = fopen(argv[4], "w");
     }
     gt_generate_text(gt, num_words, num_sentences, write_file);
+
+    // Cleanup
+    for(int i = 0; i < arrlen(file); i++) {
+        free((void *) file[i].data);
+        file[i].data = NULL;
+    }
+    arrfree(file);
+    shfree(gt);
     fclose(write_file);
     return 0;
 }
