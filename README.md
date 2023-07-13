@@ -23,14 +23,13 @@ The program accepts 4 arguments in this order:
 - The file containing the text to be read from.
 - The number of words per sentence.
 - The number of sentences.
-- File to write the generated sentences to (Optional).
+- File to write the generated sentences to. (optional)
 
 ### Example
 
 ```console
 $ ./release/main test.txt 10 5 result.txt
 ```
-
 
 ## About the Source Code
 
