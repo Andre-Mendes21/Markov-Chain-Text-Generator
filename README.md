@@ -38,4 +38,4 @@ This was tested and complied using gcc version 13.1.0.
 ## Libraries Used
 
 - [String_View By Tsoding](https://github.com/tsoding/sv)
-- [stb_ds.h by Nothings](https://github.com/nothings/stb/blob/master/stb_ds.h)
+- [stb_ds.h by Nothings](https://github.com/nothings/stb/tree/master)
