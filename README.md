@@ -31,6 +31,11 @@ The program accepts 4 arguments in this order:
 $ ./release/main test.txt 10 5 result.txt
 ```
 
+
+## About the Source Code
+
+This was tested and complied using gcc version 13.1.0.
+
 ## Libraries Used
 
 - [String_View By Tsoding](https://github.com/tsoding/sv)
