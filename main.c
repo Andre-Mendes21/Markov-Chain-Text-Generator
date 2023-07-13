@@ -24,7 +24,6 @@ void gt_print(GraphText* gt) {
 }
 
 GraphText* gt_add_keyword(GraphText* gt, String_View keyword, String_View next_word) {
-    // checks if word exists in hashTable
     String_View* keyword_vals = shget(gt, keyword.data);
     arrpush(keyword_vals, next_word);
     shput(gt, keyword.data, keyword_vals);
