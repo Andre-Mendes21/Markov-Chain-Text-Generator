@@ -30,3 +30,8 @@ The program accepts 4 arguments in this order:
 ```console
 $ ./release/main test.txt 10 5 result.txt
 ```
+
+## Libraries Used
+
+- [String_View By Tsoding](https://github.com/tsoding/sv)
+- [stb_ds.h by Nothings](https://github.com/nothings/stb/blob/master/stb_ds.h)
